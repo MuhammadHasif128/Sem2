@@ -1,7 +1,3 @@
-make = input("Enter the make of the phone: ")
-model = input("Enter the model of the phone: ")
-price = input("Enter the price of the phone: ")
-
 class Phone:
     def __init__(self):
         self.__make = None
@@ -20,8 +16,8 @@ class Phone:
         else:
             print("Price should be in numbers")
 
-    def get_phone_info(self):
-        return f"The price of the {self.__make} {self.__model} is {self.__price}"
+    def __str__(self):
+        return f"The phone created is {self.__make} {self.__model} priced at {self.__price}. Now has 1 phone in total."
 
     def get_make(self):
         return self.__make
@@ -31,12 +27,6 @@ class Phone:
 
     def get_price(self):
         return self.__price
-
-c = Phone()
-c.set_make(make)
-c.set_model(model)
-c.set_price(price)
-print(c.get_phone_info())
 
 
 
