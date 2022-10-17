@@ -17,4 +17,4 @@ class SalesPerson:
         self.__commission = 0.02 * payment_received
 
     def __str__(self):
-        return f"Salesperson {self.__name} sold {self.__phone.get_make()} at {self.__phone.get.price()} and earned a commission of {self.__commission}"
+        return f"Salesperson {self.__name} sold {self.__phone.get_make()} at {self.__phone.get_price()} and earned a commission of {self.__commission}"
