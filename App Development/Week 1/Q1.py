@@ -1,12 +1,12 @@
 class Customer:
-    def __init__(self, name, email, mobile):
+    def __init__(self, name, email, mobile_number):
         self.__name = name
         self.__email = email
-        self.__mobile = mobile
+        self.__mobile = mobile_number
 
     def get_customer_info(self):
-        return "Name: " + self.__name + "\nEmail: " + self.__email + "\nMobile: " + self.__mobile
+        return f"Name:, {self.__name}, Email: {self.__email}, Mobile Number: {self.__mobile}"
 
 
-c = Customer("John", "john@nyp.edu.sg", "92345678")
-print(c.get_customer_info())
+call_out = Customer("Muhammad Hasif", "mhasif175@gmail.com", "83436485")
+print(call_out.get_customer_info())
