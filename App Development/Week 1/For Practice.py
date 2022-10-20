@@ -9,35 +9,26 @@ class Phone:
         self.__model = None
         self.__price = 0
 
-    def set_make(self, make):
-        self.__make = make
-
-    def set_model(self, model):
-        self.__model = model
-
-    def set_price(self, price):
-        if prompt_price.isnumeric():
-            self.__price = price
-        else:
-            print("Price should be in numbers")
-
-    def get_make(self):
+    def set_make(self):
         self.__make = prompt_maker
 
-    def get_model(self):
+    def set_model(self):
         self.__model = prompt_model
 
-    def get_price(self):
-        self.__price = prompt_price
+    def set_price(self):
+        if prompt_price.isnumeric():
+            self.__price = prompt_price
+        else:
+            print("Price should be in numbers")
 
     def get_phone_info(self):
         return f"The price of {self.__make} {self.__model} is ${self.__price}"
 
 
 call_out = Phone()
-call_out.get_make()
-call_out.get_model()
-call_out.get_price()
+call_out.set_make()
+call_out.set_model()
+call_out.set_price()
 print(call_out.get_phone_info())
 
 
