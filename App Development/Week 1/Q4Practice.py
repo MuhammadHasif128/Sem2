@@ -29,4 +29,4 @@ class Phone:
         return self.__price
 
     def __str__(self):
-        return f"The phone created is {self.__make} {self.__model} priced at {self.__price}. Now has {Phone.count} phone in total"
+        return f"The phone created is {self.__make} {self.__model} priced at {self.__price}. Now has {Phone.count} phone in total."
