@@ -15,11 +15,6 @@ class SalesPerson:
     def salesperson_sold(self, phone):
         self.__phone = phone
 
-    def set_phone(self):
-        self.__phone.get_make()
-        self.__phone.get_model()
-        self.__phone.get_price()
-
     def __str__(self):
         return f"Salesperson {self.__name} sold {self.__phone.get_make()} {self.__phone.get_model()} at ${self.__phone.get_price()} and earned a commission of ${self.__commission:.2f}"
 
