@@ -20,5 +20,3 @@ q5.set_name(input_name1)
 q5.salesperson_commission(input_payment)
 q5.salesperson_sold(q4)
 print(q5.__str__())
-
-

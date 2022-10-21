@@ -1,5 +1,3 @@
-
-
 class SalesPerson:
     def __init__(self):
         self.__name = None
