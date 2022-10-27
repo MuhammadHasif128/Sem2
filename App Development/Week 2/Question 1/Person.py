@@ -21,3 +21,5 @@ class Lecturer(Person):
     def computeSalary(self):
         return self.__total_teachinghour*90
 
+
+
