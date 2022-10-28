@@ -1,3 +1,16 @@
+lname = input("Enter Lecturer Name: ")
+lnric = input("Enter Lecturer's NRIC: ")
+staff_id = input("Enter Staff ID: ")
+totalhours = float(input("Enter Total Teaching Hour: "))
+
+
+sname = input("Enter Student Name: ")
+snric = input("Enter Student NRIC: ")
+sadmin = input("Enter Student's Admin No: ")
+stest = float(input("Enter Test mark: "))
+sexam = float(input("Enter Exam mark: "))
+
+
 class Person:
     def __init__(self, name, nric):
         self.__name = name
@@ -41,8 +54,39 @@ class Student(Person):
     def get_exam_mark(self):
         return self.__exam_mark
 
-    def __str__(self):
+    def computefinalmark(self):
         return self.__test_mark/2 + self.__exam_mark/2
 
-    def computefinalmark(self):
-        return f"{super().get_name(),} Admin No: {self.__admin_no}  "
+    def __str__(self):
+        return f"{super().get_name()} Admin No: {self.__admin_no} final mark is ${self.computefinalmark():.2f}"
+
+
+class Lecturer(Person):
+    def __init__(self, name, nric, staff_id, total_teachinghour):
+        super().__init__(name, nric)
+        self.__staff_id = staff_id
+        self.__total_touchinghour = total_teachinghour
+
+    def set_staff_id(self, staff_id):
+        self.__staff_id = staff_id
+
+    def get_staff_id(self):
+        return self.__staff_id
+
+    def set_total_teachinghour(self, total_teachinghour):
+        self.__total_touchinghour = total_teachinghour
+
+    def get_total_teachinghour(self):
+        return self.__total_touchinghour
+
+    def computesalary(self):
+        return self.__total_touchinghour*90
+
+    def __str__(self):
+        return f"{super().get_name()} Staff Id: {self.__staff_id} earns ${self.computesalary():.2f}"
+
+
+lecturer = Lecturer(lname, lnric, staff_id, totalhours)
+print(lecturer)
+student = Student(sname, snric, sadmin, stest, sexam)
+print(student)
