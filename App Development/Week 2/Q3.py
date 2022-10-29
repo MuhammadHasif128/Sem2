@@ -8,8 +8,11 @@ class Player:
     def get_name(self):
         return self.__name
 
+
 class BasketballPlayer(Player):
     positions = ['Guard', 'Forward', 'Center']
+
+    team_name = input("Enter the basketball team name: ")
 
     def __init__(self, name):
         super().__init__(name)
@@ -20,6 +23,7 @@ class BasketballPlayer(Player):
             self.__position = position
         else:
             print('Invalid position for basketball player')
-    def __str__(self):
-        return f"{super().get_name()} playing as {self.__position}"
 
+    def __str__(self):
+        print(f"Team {BasketballPlayer.team_name} consists of the following positions")
+        return f"{super().get_name()} playing as {self.__position}"

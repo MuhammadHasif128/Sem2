@@ -1,7 +1,5 @@
 from Q3 import *
 
-team_name = input("Enter the basketball team name: ")
-
 player_list = []
 
 for i in range(5):
