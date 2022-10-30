@@ -12,8 +12,6 @@ class Player:
 class BasketballPlayer(Player):
     positions = ['Guard', 'Forward', 'Center']
 
-    team_name = input("Enter the basketball team name: ")
-
     def __init__(self, name):
         super().__init__(name)
         self.__position = ''
@@ -25,5 +23,4 @@ class BasketballPlayer(Player):
             print('Invalid position for basketball player')
 
     def __str__(self):
-        print(f"Team {BasketballPlayer.team_name} consists of the following positions")
         return f"{super().get_name()} playing as {self.__position}"
