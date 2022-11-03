@@ -17,3 +17,4 @@ s.set_name(input_name)
 s.salesperson_commission(input_payment_received)
 s.salesperson_sold(p)
 print(s.__str__())
+

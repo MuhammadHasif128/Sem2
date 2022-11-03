@@ -18,3 +18,4 @@ class SalesPerson:
 
     def __str__(self):
         return f"Salesperson {self.__name} sold {self.__phone.get_make()} at {self.__phone.get_model()} at {self.__phone.get_price()} and earned a commission of {self.__commission}"
+
