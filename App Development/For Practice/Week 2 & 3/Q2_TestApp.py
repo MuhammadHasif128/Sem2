@@ -33,3 +33,5 @@ print(l.__str__())
 
 s = Student(s_name, s_nric, s_admin_no, s_test_mark, s_exam_mark)
 print(s.__str__())
+
+
