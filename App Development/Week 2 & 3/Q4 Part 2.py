@@ -5,13 +5,9 @@ d = FireMonster()
 e = WaterMonster()
 f = GrassMonster()
 
-def display_info(Monster):
-    if "Fire" in Monster.get_name():
-        print(Monster)
-    elif "Water" in Monster.get_name():
-        print(Monster)
-    elif "Grass" in Monster.get_name():
-        print(Monster)
+def display_info(monster):
+    if isinstance(monster, Monster):
+        print(monster.display())
     else:
         print("Invalid Monster")
 

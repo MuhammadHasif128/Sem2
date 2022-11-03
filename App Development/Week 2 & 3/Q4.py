@@ -29,28 +29,28 @@ class Monster:
     def get_defence(self):
         return self.__defence
 
-    def __str__(self):
+    def display(self):
         return f"{self.__name} is a monster"
 
 
 class FireMonster(Monster):
     def __init__(self):
         super().__init__("Firebug", 10, 9, 4)
-    def __str__(self):
+    def display(self):
         return f"{self.get_name()} is a fire type monster"
 
 
 class WaterMonster(Monster):
     def __init__(self):
         super().__init__("Waterbird", 10, 9, 4)
-    def __str__(self):
+    def display(self):
         return f"{self.get_name()} is a Water type monster"
 
 
 class GrassMonster(Monster):
     def __init__(self):
         super().__init__("Grasshopper", 10, 9, 4)
-    def __str__(self):
+    def display(self):
         return f"{self.get_name()} is a Grass type monster"
 
 
