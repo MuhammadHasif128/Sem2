@@ -35,31 +35,26 @@ class Monster:
 
 class FireMonster(Monster):
     def __init__(self):
-        super().__init__("Firebug", 10, 9, 4)
+        super().__init__("firebug", "10", "9", "4")
 
     def display(self):
-        return f"{self.get_name()} is a fire type monster"
+        return f"{self.get_name()} is a monster"
 
 
 class WaterMonster(Monster):
     def __init__(self):
-        super().__init__("Waterbird", 10, 9, 4)
+        super().__init__("waterbird", 10, 9, 4)
 
     def display(self):
-        return f"{self.get_name()} is a Water type monster"
+        return f"{self.get_name()} is a monster"
 
 
 class GrassMonster(Monster):
     def __init__(self):
-        super().__init__("Grasshopper", 10, 9, 4)
+        super().__init__("grasshopper", 10, 9, 4)
 
     def display(self):
-        return f"{self.get_name()} is a Grass type monster"
-
-
-
-
-
+        return f"{self.get_name()} is a monster"
 
 
 
