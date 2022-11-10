@@ -9,8 +9,13 @@ try:
         numList.append(num)
 except ValueError:
     print("Enter a valid number")
+except ZeroDivisionError:
+    print("Zero Division Error")
+except:
+    print("An unknown error has occured")
 else:
     print('The lowest number in the list: ', min(numList))
     print('The highest number in the list: ', max(numList))
     print('The total of the numbers in the list: ', sum(numList))
     print('The average of the numbers in the list: ', sum(numList)/len(numList))
+
