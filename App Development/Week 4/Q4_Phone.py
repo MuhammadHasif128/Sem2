@@ -6,7 +6,7 @@ class Phone:
         self.__make = None
         self.__model = None
         self.__price = 0
-        self.__class__.count +=1
+        self.__class__.count += 1
 
     def set_id(self, id):
         self.__id = id

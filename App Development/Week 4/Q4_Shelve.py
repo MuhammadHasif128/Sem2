@@ -84,17 +84,17 @@ def delete():
 
 
 def display_all():
-   for i in dictionary:
-       print(dictionary[i])
+    for i in dictionary:
+        print(dictionary[i])
 
 
 s = shelve.open('storagecbappdev', 'c')
-display_menu()
-
 try:
-    if 'Phone' in s: #is key exist?
-        dictionary = s["Phone"] #retrieve data
+    if 'Phone' in s:  # is key exist?
+        dictionary = s["Phone"]  # retrieve data
     else:
-        s["Phone"] = dictionary #start with empty
+        s["Phone"] = dictionary  # start with empty
 except:
     print("Error in opening storage.db.")
+else:
+    display_menu()
