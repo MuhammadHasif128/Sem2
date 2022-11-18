@@ -1,17 +1,19 @@
 import shelve
 
+q3_dictionary = {}
+
 
 class Question:
-    def __init__(self, id, question_desc, answer):
-        self.__id = id
-        self.__question_desc = question_desc
+    def __init__(self, ques_id, ques_desc, answer):
+        self.__ques_id = ques_id
+        self.__ques_desc = ques_desc
         self.__answer = answer
 
-    def get_id(self):
-        return self.__id
+    def get_ques_id(self):
+        return self.__ques_id
 
     def get_ques_desc(self):
-        return self.__question_desc
+        return self.__ques_desc
 
     def get_answer(self):
         return self.__answer
@@ -33,34 +35,35 @@ def menu():
             display()
         else:
             print('End of program')
+            db.close()
             break
 
 
 def add():
-    id = input("Enter question id: ")
-    question_desc = input("Enter question description: ")
-    answer = input("Enter question answer: ")
-    question_dict[id] = Question(id, question_desc, answer) # store id key
-    db['question'] = question_dict # saving into dictionary, name of database question
+    input_id = input("Enter question id: ")
+    input_description = input("Enter question description: ")
+    input_answer = input("Enter question answer: ")
+
+    q3_dictionary[input_id] = Question(input_id, input_description, input_answer)
+    db['q3 label'] = q3_dictionary
     print("A question is added to shelve")
 
 
 def display():
-    id = input('Enter question id to display')
-    if id in question_dict:
-        q = question_dict[id]
-        print("Question id:", q.get_id(), "Description: ", q.get_ques_desc(), "Answer", q.get_answer())
+    input_id = input("Enter the question id to display: ")
+    if input_id in q3_dictionary:
+        q = q3_dictionary[input_id]
+        print("Question id:", q.get_ques_id(), "\nDescription:", q.get_ques_desc(), "\nAnswer:", q.get_answer())
     else:
         print("No such question")
 
 
-db = shelve.open("questionDB", "c")  # c means if database not there it will automatically create for you
-question_dict = {}
+db = shelve.open("q3shelve", "c")
 try:
-    if "question" in db:
-        question_dict = db['question']  # will become database
+    if "q3 label" in db:
+        q3_dictionary = db["q3 label"]
     else:
-        db['question'] = question_dict
+        db["q3 label"] = q3_dictionary
 except:
     print("Error in opening storage file")
 else:
