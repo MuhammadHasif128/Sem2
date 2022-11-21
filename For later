@@ -1,0 +1,219 @@
+class Student:
+    def __init__(self, name):
+        self.name = name  # [0]
+        self.math = 0  # [1]
+        self.chinese = 0  # [2]
+        self.english = 0  # [3]
+        self.science = 0  # [4]
+        self.choices = []
+
+    def get_score(self):
+        return (self.math + self.chinese + self.english + self.science) / 4
+
+
+def main():
+    students = load_result()
+    for s in students:
+        s.choices.append('School A')
+        s.choices.append('School B')
+        s.choices.append('School C')
+        print(f"{s.name} scores {s.get_score()}, the choices are {s.choices[0]}, {s.choices[1]}, {s.choices[2]}")
+
+
+def load_result():
+    students = []
+    try:
+        result_file = open('results (1).txt', "r")
+        for r in result_file:
+            r_list = r.split(', ')
+            s1 = Student(r_list[0])
+            s1.math = float(r_list[1])
+            s1.chinese = float(r_list[2])
+            s1.english = float(r_list[3])
+            s1.science = float(r_list[4])
+            students.append(s1)
+    except IOError:
+        print('File not accessible')
+    return students
+
+
+# start the test program
+main()
+
+
+q4
+
+from Q4_Phone import *
+import shelve
+
+command = 0
+
+dictionary = {}
+
+
+def display_menu():
+    while True:
+        print('Select the program (1-6) to run: ')
+        print('1. Search for a phone')
+        print('2. Add a new phone')
+        print('3. Update phone details')
+        print('4. Delete a phone')
+        print('5. Display all phones')
+        print('6. Quit the program')
+        val = int(input('Enter your command (1-6): '))
+        if val == 6:
+            print('End of program')
+            s["Phone"] = dictionary
+            s.close()
+            break
+        elif val == 1:
+            search()
+        elif val == 2:
+            add()
+        elif val == 3:
+            update()
+        elif val == 4:
+            delete()
+        elif val == 5:
+            display_all()
+
+
+def search():
+    id = input("Enter phone id: ")
+    print(dictionary[id])
+
+
+def add():
+    id = input("Enter phone id: ")
+    id_make = input("Enter phone make: ")
+    id_model = input("Enter phone model: ")
+    id_price = input("Enter price of phone: ")
+
+    d = Phone()
+    d.set_id(id)
+    d.set_make(id_make)
+    d.set_model(id_model)
+    d.set_price(id_price)
+
+    dictionary[id] = d
+
+    print("Phone successfully added")
+
+
+def update():
+    id = input("Enter phone id to update? ")
+    id_make = input("What is the new make? (Leave empty to remain unchange): ")
+    id_model = input("What is the new model? (Leave empty to remain unchange):  ")
+    id_price = input("What is the new price? (Leave empty to remain unchange): ")
+    if id_make != "":
+        dictionary[id].set_make(id_make)
+    else:
+        pass
+    if id_model != "":
+        dictionary[id].set_model(id_model)
+    else:
+        pass
+    if id_price != "":
+        dictionary[id].set_price(id_price)
+    else:
+        pass
+    print("Phone:", id, "price updated")
+
+    s["Phone"] = dictionary
+
+
+def delete():
+    id = input("Enter the phone id to delete: ")
+    dictionary[id].pop(id)
+    print("Phone", id, "is deleted")
+
+
+def display_all():
+    for i in dictionary:
+        print(dictionary[i])
+
+
+s = shelve.open('storagecbappdev', 'c')
+try:
+    if 'Phone' in s:  # is key exist?
+        dictionary = s["Phone"]  # retrieve data
+    else:
+        s["Phone"] = dictionary  # start with empty
+except:
+    print("Error in opening storage.db.")
+else:
+    display_menu()
+
+
+q3 revision
+
+import shelve
+
+q3_dictionary = {}
+
+
+class Question:
+    def __init__(self, ques_id, ques_desc, answer):
+        self.__ques_id = ques_id
+        self.__ques_desc = ques_desc
+        self.__answer = answer
+
+    def get_ques_id(self):
+        return self.__ques_id
+
+    def get_ques_desc(self):
+        return self.__ques_desc
+
+    def get_answer(self):
+        return self.__answer
+
+
+def menu():
+    while True:
+        print('Select the program (1-3) to run: ')
+        print('1. Add a Question')
+        print('2. Display a Question (by id)')
+        print('3. Quit the program')
+        try:
+            val = int(input('Enter your command (1-3): '))
+        except ValueError:
+            val = 3
+        if val == 1:
+            add()
+        elif val == 2:
+            display()
+        else:
+            print('End of program')
+            db.close()
+            break
+
+
+def add():
+    input_id = input("Enter question id: ")
+    input_description = input("Enter question description: ")
+    input_answer = input("Enter question answer: ")
+
+    q3_dictionary[input_id] = Question(input_id, input_description, input_answer)
+    db['q3 label'] = q3_dictionary
+    print("A question is added to shelve")
+
+
+def display():
+    input_id = input("Enter the question id to display: ")
+    if input_id in q3_dictionary:
+        q = q3_dictionary[input_id]
+        print("Question id:", q.get_ques_id(), "\nDescription:", q.get_ques_desc(), "\nAnswer:", q.get_answer())
+    else:
+        print("No such question")
+
+
+db = shelve.open("q3shelve", "c")
+try:
+    if "q3 label" in db:
+        q3_dictionary = db["q3 label"]
+    else:
+        db["q3 label"] = q3_dictionary
+except:
+    print("Error in opening storage file")
+else:
+    menu()
